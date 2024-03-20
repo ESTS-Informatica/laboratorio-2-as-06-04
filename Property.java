@@ -69,6 +69,6 @@ public class Property {
 
     @Override
     public String toString() {
-        return "";
+        return "Descricao: " + getDescription() + " Preco: " + getPrice();
     }
 }
