@@ -97,13 +97,15 @@ public class CompanyTest
         assertTrue(testCompany.registerProperty(new Property ("Casa Triste", 1.0)));
     }
     
-     public void testRegisterPropertyDuplicate(){
+    @Test
+    public void testRegisterPropertyDuplicate(){
         testCompany.registerProperty(new Property ("Casa de Luxo", 999999999999.9));
         assertFalse(testCompany.registerProperty(testCompany.getProperties().get(0)));
         testCompany.registerProperty(new Property ("Casa Triste", 1.0));
         assertFalse(testCompany.registerProperty(testCompany.getProperties().get(1)));
     }
     
+    @Test
     public void testRegisterPropertyNull(){
         assertFalse(testCompany.registerProperty(null));
     }
