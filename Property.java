@@ -21,8 +21,8 @@ public class Property {
      */
     public Property(String description, double price) {
         id = "";
-        description = "";
-        price = 0.0;
+        this.description = description;
+        this.price = price;
 
     }
 
@@ -37,7 +37,7 @@ public class Property {
      * Description selector.
      */
     public String getDescription() {
-        return "";
+        return description;
     }
 
     /**
@@ -46,6 +46,7 @@ public class Property {
      * @param description The new description. Must not be null.
      */
     public void setDescription(String description) {
+        this.description = description;
 
     }
 
@@ -53,7 +54,7 @@ public class Property {
      * Price selector.
      */
     public double getPrice() {
-        return 0.0;
+        return this.price;
         
     }
     
@@ -63,7 +64,7 @@ public class Property {
      * @param price The new price. Must not be negative.
      */
     public void setPrice(double price) {
-
+        this.price = price;
     }
 
     @Override
