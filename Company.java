@@ -137,8 +137,13 @@ public class Company {
      * @return true If the request succeeds, false otherwise.
      */
     public boolean createSell(User client, User seller, Property property) {
-        return true;         
+        if(this.clients.contains(client) && this.sellers.contains(seller) && this.properties.contains(property)){
+        this.sells.add(new Sell(client,seller,property));    
+        return true;
+    } else {
+    return false;
     }
+}
 
     /**
      * Calculates the total number of sells within the provided year.
@@ -147,7 +152,13 @@ public class Company {
      * @return The total number of sells in the year.
      */
     public int calculateSellsOfTheYear(int year) {
-        return 0;         
+        int count = 0;
+       for(Sell s : this.sells){
+           if(s.getDate().getYear() == year){
+               count++;
+           }
+       }
+       return count;
     }
 
     /**

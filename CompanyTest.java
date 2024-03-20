@@ -3,6 +3,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+import java.time.LocalDate;
+
 
 /**
  * The test class CompanyTest.
@@ -29,8 +31,6 @@ public class CompanyTest
     @BeforeEach
     public void setUp()
     {
-        
-
     }
 
 
@@ -108,6 +108,36 @@ public class CompanyTest
     @Test
     public void testRegisterPropertyNull(){
         assertFalse(testCompany.registerProperty(null));
+    }
+    
+    @Test
+    public void testCreateSell(){
+        testCompany.registerClient(new User("José Manuel", "911111111", "zemanel@yahoo.com"));
+        testCompany.registerSeller(new User("Fernando Fernandes","966777101","fefe@remax.pt"));
+        testCompany.registerProperty(new Property ("Casa de Luxo", 999999999999.9));
+        assertTrue(testCompany.createSell(testCompany.getClients().get(0), testCompany.getSellers().get(0), testCompany.getProperties().get(0)));
+        testCompany.registerClient(new User("António Francisco", "922222222", "tochico@hotmail.com"));
+        testCompany.registerSeller(new User("Rodrigo Rodrigues","966777152","roro@remax.pt"));
+        testCompany.registerProperty(new Property ("Casa Triste", 1.0));
+        assertTrue(testCompany.createSell(testCompany.getClients().get(1), testCompany.getSellers().get(1), testCompany.getProperties().get(1)));
+    }
+    
+    @Test
+    public void testCalculateSellsOfTheYear(){
+        testCompany.registerClient(new User("José Manuel", "911111111", "zemanel@yahoo.com"));
+        testCompany.registerSeller(new User("Fernando Fernandes","966777101","fefe@remax.pt"));
+        testCompany.registerProperty(new Property ("Casa de Luxo", 999999999999.9));
+        assertTrue(testCompany.createSell(testCompany.getClients().get(0), testCompany.getSellers().get(0), testCompany.getProperties().get(0)));
+        testCompany.registerClient(new User("António Francisco", "922222222", "tochico@hotmail.com"));
+        testCompany.registerSeller(new User("Rodrigo Rodrigues","966777152","roro@remax.pt"));
+        testCompany.registerProperty(new Property ("Casa Triste", 1.0));
+        assertTrue(testCompany.createSell(testCompany.getClients().get(1), testCompany.getSellers().get(1), testCompany.getProperties().get(1)));
+        assertEquals(2, testCompany.calculateSellsOfTheYear(LocalDate.now().getYear()));
+    }
+    
+    @Test 
+    public void testFindSellerOfTheYear(){
+        
     }
         
 }
